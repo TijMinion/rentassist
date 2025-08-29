@@ -1,0 +1,16 @@
+
+.profile-nav {
+  svg {
+    rect, path, circle {
+      stroke: #666275 ;
+    }
+  }
+
+  .active-menu {
+    svg {
+      rect, path, circle {
+        stroke: #fff;
+      }
+    }
+  }
+}

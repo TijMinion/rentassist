@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@theme {
+  --color-nnTextPurple: #635f71;
+  --color-nnDefaultBlue: #273576;
+  --color-nnBackground: #eaeef4;
+}

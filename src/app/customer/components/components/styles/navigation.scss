@@ -1,0 +1,15 @@
+.desktop-nav {
+
+  svg {
+    rect, path, circle {
+      stroke: #666275 ;
+    }
+
+    &.active-svg {
+      rect, path, circle {
+        stroke: #fff;
+      }
+    }
+  }
+
+}
