@@ -6,7 +6,8 @@ import { MobileNavigation } from "@/app/customer/components/components/MobileNav
 import { AppBar } from "@/app/customer/components/components/AppBar";
 import { SessionProvider } from "next-auth/react";
 import { LayoutWrapper } from "@/app/customer/components/components/LayoutWrapper";
-
+import { Disclosure } from "@headlessui/react";
+import { Footer } from "@/app/customer/components/components/Footer";
 
 export const DefaultCustomerPortalLayout = (props: any) => {
     const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -14,15 +15,23 @@ export const DefaultCustomerPortalLayout = (props: any) => {
     return (
         <SessionProvider >
             <LayoutWrapper>
-                <MobileNavigation sidebarOpen={ sidebarOpen }  setSidebarOpen={ setSidebarOpen } />
-                <Navigation />
-                <div className="lg:pl-30">
-                    <AppBar setSidebarOpen={ setSidebarOpen } />
-                    <main className="pt-4 pb-10">
-                        <div className="px-4 sm:px-6 lg:px-8">
+                <div className="min-h-full">
+                    <Disclosure as="nav" className="bg-raGreen dark:bg-raBlue">
+                        <MobileNavigation sidebarOpen={ sidebarOpen }  setSidebarOpen={ setSidebarOpen } />
+                        <Navigation />
+                    </Disclosure>
+                    {/*<AppBar setSidebarOpen={ setSidebarOpen } />*/}
+                    <main>
+                        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                             { props.children }
                         </div>
                     </main>
+                    <Footer />
+                    {/*<main className="pt-4 pb-10">*/}
+                    {/*    <div className="px-4 sm:px-6 lg:px-8">*/}
+                    {/*        */}
+                    {/*    </div>*/}
+                    {/*</main>*/}
                 </div>
             </LayoutWrapper>
         </SessionProvider>

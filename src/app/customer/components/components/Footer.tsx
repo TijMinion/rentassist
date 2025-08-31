@@ -14,7 +14,7 @@ const navigation: NavItem[] = [
         { name: 'FAQ', href: 'faq' },
     ];
 
-export const LandingFooter = () => {
+export const Footer: () => JSX.Element = (): JSX.Element => {
     const today = new Date();
 
     function scrollToSection(section: string): void {
@@ -24,8 +24,8 @@ export const LandingFooter = () => {
 
 
     return (
-        <footer className="bg-raGreen">
-            <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+        <footer className="bg-raGreen dark:bg-raBlueDarker__30_percent">
+            <div className="mx-auto max-w-7xl overflow-hidden px-8 py-10 sm:py-4 lg:px-8">
                 <nav aria-label="Footer" className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-sm/6">
                     { navigation.map((item: NavItem, index: number): JSX.Element => {
                         return (

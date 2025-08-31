@@ -41,14 +41,13 @@ function getCookie(cname: string) {
 
 export const AppBar = (props:any) => {
     const session = useSession();
-    console.log(session);
     const [userImage, setUserImage] = useState<string>();
     const [userName, setUserName] = useState<string>();
     const [user, setUser] = useState<any>(null);
     const router = useRouter();
 
     useEffect( () => {
-        console.log(session)
+
         if (session?.status === "authenticated") {
             let image = session?.data?.user?.image ?? undefined;
             setUserImage( image );
@@ -82,7 +81,7 @@ export const AppBar = (props:any) => {
                         headers: {
                             "Content-Type": "application/json",
                             'token':  token,
-                            'NokNok': 'front'
+                            'RentAssist': 'front'
                         },
                     });
                     fetch(request)
@@ -90,7 +89,7 @@ export const AppBar = (props:any) => {
                             delete_cookie('authToken');
                             delete_cookie('host_url');
                             delete_cookie('u_id');
-                            router.push('/account');
+                            router.push('/');
                         } )
 
                 })
@@ -102,7 +101,7 @@ export const AppBar = (props:any) => {
 
     return (
         <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 bg-[#e7edf3] px-4 sm:gap-x-6 sm:px-6 lg:px-8">
-            <button type="button" onClick={() => props.setSidebarOpen(true)} className="-m-2.5 p-2.5 text-gray-700 lg:hidden">
+            <button type="button" onClick={ () => props.setSidebarOpen(true) } className="-m-2.5 p-2.5 text-gray-700 lg:hidden">
                 <span className="sr-only">Open sidebar</span>
                 <Bars3Icon aria-hidden="true" className="size-6" />
             </button>
@@ -141,7 +140,7 @@ export const AppBar = (props:any) => {
                             <span className="sr-only">Open user menu</span>
                             <div className="">
                                 { (userImage === undefined) &&
-                                    <UserIcon />
+                                    <UserIcon className="size-7" />
                                 }
                                 { (userImage !== undefined) &&
                                     <img

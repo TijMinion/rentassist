@@ -15,7 +15,6 @@ export const HomePage = () => {
             <HomePageSecondFeatures />
             <HomePagePricing />
             <HomePageFAQ />
-            <HomePageFeatures />
         </DefaultLandingLayout>
     );
 }

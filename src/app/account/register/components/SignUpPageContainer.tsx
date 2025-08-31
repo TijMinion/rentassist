@@ -14,56 +14,70 @@ import { EyeSlashIcon } from "@heroicons/react/16/solid";
 import { EyeIcon }  from "@heroicons/react/16/solid";
 import { ArrowPathIcon } from "@heroicons/react/20/solid";
 import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
+import { createCustomerAccount } from "@/app/account/register/components/hooks/sign-up-page-container";
 
-export const LoginPageContainer: () => JSX.Element = (): JSX.Element => {
+export const SignUpPageContainer: () => JSX.Element = (): JSX.Element => {
     const [password, setPassword] = useState<string>('');
     const [email, setEmail] = useState<string>('');
+    const [firstName, setFirstName] = useState<string>('');
+    const [lastName, setLastName] = useState<string>('');
     const [errors, setErrors] = useState<string>();
     const [loggingIn, setLoggingIn] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const session: any = useSession();
     const router: AppRouterInstance = useRouter()
 
-    useEffect(() => {
+    useEffect( (): void => {
         if (session?.status === "authenticated") {
             router.replace("/customer/dashboard");
         }
     }, [session, router]);
 
 
-    const loginUser = async (e : any) => {
+    const createUser: (e: any) => Promise<void> = async (e : any) => {
         e.preventDefault();
         setLoggingIn(true);
+        setErrors(undefined);
         if (!password || password === "") {
             setLoggingIn(false);
             setErrors('Invalid email or password');
             return;
         }
 
-        await signIn(
-            "credentials",
-            {
-                redirect: false,
-                username: email,
-                password: password,
-            }
+        await createCustomerAccount(
+            (firstName + ' ' + lastName),
+            email,
+            password
         )
-            .then( (res) => {
-                console.log(res);
-                if (res?.error) {
-                    // console.log(res.error);
-                    setErrors('Invalid email or password')
-                    //if (res?.url) router.replace("/dashboard");
+            .then( async (data: any) => {
+                if (data?.status !== undefined && data?.status === 'success') {
+                    await signIn(
+                        'credentials',
+                        {
+                            redirect: false,
+                            username: email,
+                            password: password,
+                        }
+                    )
+                        .then( (res) => {
+                            if (res?.error) {
+                                setErrors('Something has gone wrong!');
+                            } else {
+                                setErrors(undefined);
+                            }
+                            setLoggingIn(false);
+                        })
+                        .catch( (err: Error) => {
+                            console.log(err);
+                        })
                 } else {
-                    setErrors(undefined);
+                    setLoggingIn(false);
+                    setErrors(data?.message ?? 'Something went wrong!');
                 }
-                setLoggingIn(false);
             })
             .catch((err) => {
                 console.log(err);
-            })
-
-
+            });
     }
 
     function handleEmailChange(e: any): void {
@@ -80,32 +94,79 @@ export const LoginPageContainer: () => JSX.Element = (): JSX.Element => {
         setShowPassword(!showPassword);
     }
 
+    function handleFirstNameChange(e: any): void {
+        setFirstName(e.target.value);
+    }
+    function handleLastNameChange(e: any): void {
+        setLastName(e.target.value);
+    }
+
     return (
         <>
             <div className="w-full h-screen mx-auto px-4 sm:px-6 lg:px-0 flex justify-center items-center bg-nnBackground">
                 {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
                 <div className="w-full grid sm:grid-cols-1 md:grid-cols-[50%_50%] h-full 3xl:grid-cols-[32%_68%] ">
                     <div className="login-container bg-white w-full p-12 relative h-full flex items-center blur-none">
-                        <form onSubmit={ loginUser } className="w-full" >
+                        <form onSubmit={ createUser } className="w-full" >
                             <div className="space-y-12 w-full">
                                 <div className="pb-4">
                                     <div className="flex justify-center items-center flex-col">
-
                                         <div className="mt-4 mb-20">
                                             <Link href="/">
                                                 <img className="w-[200px] h-[80px]" src="/image/icon/ra-logo.png" alt="Logo Logo"  />
                                             </Link>
-
                                         </div>
-                                        <span className="font-bold text-4xl text-raBlue -mt-4 mb-[30px] font-sans">{ "Sign into your account!" }</span>
+                                        <span className="font-bold text-4xl text-raBlue -mt-4 mb-[30px] font-sans">{ "Get started for free!" }</span>
                                     </div>
                                     <div className="w-full flex items-center mt-7">
-                                        <span className="text-raBlue font-sans" >{ "Don't have an account?" }</span>
-                                        <Link href="/account/register" className="text-sm/6 font-semibold text-raGreen ml-2">
-                                            { "Sign up" }
+                                        <span className="text-raBlue font-sans" >{ "Already have an account?" }</span>
+                                        <Link href="/account" className="text-sm/6 font-semibold text-raGreen ml-2">
+                                            { "Sign in" }
                                         </Link>
                                     </div>
                                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                                        <div className="col-span-full">
+                                            <div className="w-full flex">
+                                                <div className="w-1/2 pr-2 flex flex-col">
+                                                    <label htmlFor="firstName" className="block text-sm/6 font-medium text-raBlue">
+                                                        First Name
+                                                    </label>
+                                                    <div className="mt-2">
+                                                        <div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                                                            <input
+                                                                id="firstName"
+                                                                name="firstName"
+                                                                type="text"
+                                                                autoComplete="firstName"
+                                                                value={ firstName }
+                                                                onChange={ handleFirstNameChange }
+                                                                placeholder="Enter your first name"
+                                                                className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6 h-[48px]"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="w-1/2 ml-2">
+                                                    <label htmlFor="email" className="block text-sm/6 font-medium text-raBlue">
+                                                        Surname
+                                                    </label>
+                                                    <div className="mt-2">
+                                                        <div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                                                            <input
+                                                                id="surnam"
+                                                                name="surname"
+                                                                type="text"
+                                                                autoComplete="surnam"
+                                                                value={ lastName }
+                                                                onChange={ handleLastNameChange }
+                                                                placeholder="Surname"
+                                                                className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6 h-[48px]"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div className="col-span-full">
                                             <label htmlFor="email" className="block text-sm/6 font-medium text-raBlue">
                                                 Email address
@@ -190,7 +251,7 @@ export const LoginPageContainer: () => JSX.Element = (): JSX.Element => {
                                     cursor-pointer
                                     "
                                 >
-                                    <span>{ "Sign in" }</span>
+                                    <span>{ "Create Account" }</span>
                                     { (loggingIn) &&
                                         <ArrowPathIcon className="animate-spin w-8 h-8 text-white fill-current ml-4" />
                                     }

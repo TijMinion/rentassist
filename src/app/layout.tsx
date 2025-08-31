@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NokNok",
-  description: "NokNok Ai",
+  title: "RentAssist",
+  description: "RentAssit",
 };
 
 export default function RootLayout({
@@ -23,10 +23,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark:bg-raBlueDarker__30_percent" id="html">
     <head>
-        <link rel="icon" href="/image/logo/nn-logo-white.png" />
-        <title>NokNok</title>
+        <link rel="icon" href="/image/icon/ra-fav.png" />
+        <title>RentAssist</title>
     </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
