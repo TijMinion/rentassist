@@ -113,14 +113,14 @@ export const SignUpPageContainer: () => JSX.Element = (): JSX.Element => {
                                     <div className="flex justify-center items-center flex-col">
                                         <div className="mt-4 mb-20">
                                             <Link href="/">
-                                                <img className="w-[200px] h-[80px]" src="/image/icon/ra-logo.png" alt="Logo Logo"  />
+                                                <img className="w-[240px] h-auto" src="/image/icon/ra-logo.png" alt="Logo Logo"  />
                                             </Link>
                                         </div>
-                                        <span className="font-bold text-4xl text-raBlue -mt-4 mb-[30px] font-sans">{ "Get started for free!" }</span>
+                                        <span className="font-bold text-5xl text-raBlue -mt-4 mb-[30px] font-sans">{ "Get started for free!" }</span>
                                     </div>
                                     <div className="w-full flex items-center mt-7">
-                                        <span className="text-raBlue font-sans" >{ "Already have an account?" }</span>
-                                        <Link href="/account" className="text-sm/6 font-semibold text-raGreen ml-2">
+                                        <span className="text-raBlue font-sans text-xl" >{ "Already have an account?" }</span>
+                                        <Link href="/account" className="text-xl font-semibold text-raGreen ml-2">
                                             { "Sign in" }
                                         </Link>
                                     </div>
@@ -128,7 +128,7 @@ export const SignUpPageContainer: () => JSX.Element = (): JSX.Element => {
                                         <div className="col-span-full">
                                             <div className="w-full flex">
                                                 <div className="w-1/2 pr-2 flex flex-col">
-                                                    <label htmlFor="firstName" className="block text-sm/6 font-medium text-raBlue">
+                                                    <label htmlFor="firstName" className="block text-xl font-medium text-raBlue">
                                                         First Name
                                                     </label>
                                                     <div className="mt-2">
@@ -141,13 +141,13 @@ export const SignUpPageContainer: () => JSX.Element = (): JSX.Element => {
                                                                 value={ firstName }
                                                                 onChange={ handleFirstNameChange }
                                                                 placeholder="Enter your first name"
-                                                                className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6 h-[48px]"
+                                                                className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-raBlue/80 placeholder:text-gray-400 focus:outline-none sm:text-xl h-[48px]"
                                                             />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="w-1/2 ml-2">
-                                                    <label htmlFor="email" className="block text-sm/6 font-medium text-raBlue">
+                                                    <label htmlFor="email" className="block text-xl font-medium text-raBlue">
                                                         Surname
                                                     </label>
                                                     <div className="mt-2">
@@ -160,7 +160,7 @@ export const SignUpPageContainer: () => JSX.Element = (): JSX.Element => {
                                                                 value={ lastName }
                                                                 onChange={ handleLastNameChange }
                                                                 placeholder="Surname"
-                                                                className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6 h-[48px]"
+                                                                className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-raBlue/80 placeholder:text-gray-400 focus:outline-none sm:text-xl h-[48px]"
                                                             />
                                                         </div>
                                                     </div>
@@ -168,7 +168,7 @@ export const SignUpPageContainer: () => JSX.Element = (): JSX.Element => {
                                             </div>
                                         </div>
                                         <div className="col-span-full">
-                                            <label htmlFor="email" className="block text-sm/6 font-medium text-raBlue">
+                                            <label htmlFor="email" className="block text-xl font-medium text-raBlue">
                                                 Email address
                                             </label>
                                             <div className="mt-2">
@@ -181,7 +181,7 @@ export const SignUpPageContainer: () => JSX.Element = (): JSX.Element => {
                                                         value={ email }
                                                         onChange={ handleEmailChange }
                                                         placeholder="Enter your email address"
-                                                        className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6 h-[48px]"
+                                                        className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-xl h-[48px]"
                                                     />
                                                 </div>
                                             </div>
@@ -189,10 +189,10 @@ export const SignUpPageContainer: () => JSX.Element = (): JSX.Element => {
 
                                         <div className="col-span-full">
                                             <div className="w-full flex justify-between">
-                                                <label htmlFor="password" className="block text-sm/6 font-medium text-raBlue">
+                                                <label htmlFor="password" className="block text-xl font-medium text-raBlue">
                                                     Password
                                                 </label>
-                                                <Link href="/account/forgot-password" className="text-sm/6 font-semibold text-raBlue hover:text-raGreen">
+                                                <Link href="/account/forgot-password" className="text-xl font-semibold text-raBlue hover:text-raGreen">
                                                     { "Forgot Password?" }
                                                 </Link>
                                             </div>
@@ -207,7 +207,7 @@ export const SignUpPageContainer: () => JSX.Element = (): JSX.Element => {
                                                         value={ password }
                                                         onChange={ handlePasswordChange }
                                                         placeholder="Enter your password"
-                                                        className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6 h-[48px]"
+                                                        className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-xl h-[48px]"
                                                     />
                                                     <div className="w-[60px] flex justify-center items-center cursor-pointer" onClick={ handleShowPasswordClick }>
                                                         { !showPassword &&
@@ -237,7 +237,7 @@ export const SignUpPageContainer: () => JSX.Element = (): JSX.Element => {
                                     h-[50px]
                                     px-3
                                     py-2
-                                    text-lg
+                                    text-3xl
                                     font-semibold
                                     text-white
                                     shadow-xs
@@ -253,10 +253,10 @@ export const SignUpPageContainer: () => JSX.Element = (): JSX.Element => {
                                 >
                                     <span>{ "Create Account" }</span>
                                     { (loggingIn) &&
-                                        <ArrowPathIcon className="animate-spin w-8 h-8 text-white fill-current ml-4" />
+                                        <ArrowPathIcon className="animate-spin w-9 text-white fill-current ml-4" />
                                     }
                                     { (!loggingIn) &&
-                                        <ArrowLongRightIcon className="w-8 pl-2 mt-1" />
+                                        <ArrowLongRightIcon className="w-9 pl-2 mt-1" />
                                     }
                                 </button>
 

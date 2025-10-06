@@ -21,32 +21,26 @@ export const ForgotPasswordContainer = () => {
 
     return (
         <>
-            <div className="w-full h-screen mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center bg-nnBackground">
-                <div className="mx-auto relative">
-                    <div className="hidden lg:block absolute lg:left-[-66px] lg:top-[-80px]">
-                        <IconTop />
-                    </div>
-                    <div className="hidden lg:block absolute lg:right-[-54px] lg:bottom-[-100px]">
-                        <IconBottom />
-                    </div>
-                    <div className="login-container bg-white md:w-full lg:w-[600px] rounded shadow-lg p-12 relative">
-                        <form onSubmit={ handleForgotPasswordReset }>
+            <div className="w-full h-screen mx-auto px-4 sm:px-6 lg:px-0 flex justify-center items-center">
+                <div className="w-full grid sm:grid-cols-1 md:grid-cols-[50%_50%] h-full 3xl:grid-cols-[32%_68%] ">
+                    <div className="forgot-password-container bg-white w-full p-12 relative h-full flex items-center blur-none">
+                        <form onSubmit={ handleForgotPasswordReset } className="w-full">
                             <div className="space-y-12">
                                 <div className="pb-4">
                                     <div className="flex justify-center items-center flex-col">
 
-                                        <div className="-mt-4">
+                                        <div className="mt-4 mb-20">
                                             <Link href="/">
-                                                <img className="w-[200px] h-[200px]" src="/image/logo/nn-logo-white.png" alt="Logo Logo"  />
+                                                <img className="w-[200px] h-[80px]" src="/image/icon/ra-logo.png" alt="Logo Logo"  />
                                             </Link>
 
                                         </div>
-                                        <span className="font-bold text-2xl text-nnTextPurple -mt-4 mb-2 w-full text-left">{ "Forgot Password?" }</span>
-                                        <p className="text-xl text-left w-full text-nnTextPurple" >{ "Enter your email and we'll send you instructions to reset your password" }</p>
+                                        <span className="font-bold text-2xl text-raBlue -mt-4 mb-2 w-full text-left">{ "Forgot Password?" }</span>
+                                        <p className="text-xl text-left w-full text-raBlue" >{ "Enter your email and we'll send you instructions to reset your password" }</p>
                                     </div>
                                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                         <div className="col-span-full">
-                                            <label htmlFor="email" className="block text-sm/6 font-medium text-nnTextPurple">
+                                            <label htmlFor="email" className="block text-sm/6 font-medium text-raBlue">
                                                 Email address
                                             </label>
                                             <div className="mt-2">
@@ -71,7 +65,7 @@ export const ForgotPasswordContainer = () => {
                                 <button
                                     type="submit"
                                     className="rounded-md
-                                    bg-nnDefaultBlue
+                                    bg-raGreen
                                     w-full
                                     h-[50px]
                                     px-3
@@ -80,21 +74,32 @@ export const ForgotPasswordContainer = () => {
                                     font-semibold
                                     text-white
                                     shadow-xs
-                                    hover:bg-indigo-500
+                                    hover:bg-raBlue
                                     focus-visible:outline-2
                                     focus-visible:outline-offset-2
-                                    focus-visible:outline-indigo-600"
+                                    focus-visible:outline-raBlue
+                                    flex
+                                    items-center
+                                    justify-center
+                                    cursor-pointer
+                                    "
                                 >
                                     { "Send Reset Link" }
                                 </button>
                                 <div className="w-full flex justify-center items-center mt-7">
-                                    <ChevronLeftIcon className="w-5 h-5 text-nnDefaultBlue fill-current" />
-                                    <Link href="/account" className="text-md font-semibold text-nnDefaultBlue ml-2 ">
+                                    <ChevronLeftIcon className="w-5 h-5 text-raBlue fill-current" />
+                                    <Link href="/account" className="text-md font-semibold text-raBlue ml-2 ">
                                         { "Back to log in" }
                                     </Link>
                                 </div>
                             </div>
                         </form>
+                    </div>
+                    <div className="w-full bg-raBlue justify-center items-center xs:hidden hidden lg:flex" >
+                        <div className="w-[300px] h-[300px] rounded-md flex justify-center items-center bg-white blur">
+                            <img className="" src="/image/icon/ra-fav.png" alt="Logo Logo"  />
+                        </div>
+
                     </div>
                 </div>
             </div>

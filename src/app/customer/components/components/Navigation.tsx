@@ -1,20 +1,13 @@
 "use client";
-import { useState, useEffect, Component } from "react";
+import { useState, useEffect, JSX } from "react";
 import './styles/navigation.scss';
-import IconDashboard from '../images/dashboard-icon.svg';
-import IconAudit from '../images/postbox-icon.svg';
-import IconSchedular from '../images/calendar-icon.svg';
-import IconContacts from '../images/users-icon.svg';
-import IconForms from '../images/form-icon.svg';
-import IconFiles from '../images/file-icon.svg';
-import IconProfile from '../images/profile-icon.svg';
-import IconDots from '../images/three-dots-icon.svg';
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import {Bars3Icon, BellIcon, UserIcon, XMarkIcon} from '@heroicons/react/24/outline'
+import { Bars3Icon, BellIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useSession, signOut } from "next-auth/react";
 import { delete_cookie, read_cookie } from "sfcookies";
 import { useRouter } from "next/navigation";
 import { LightDarkModeToggle } from "@/app/customer/dashboard/components/components/tiles/components/LightDarkModeToggle";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 type NavItem = {
     name: string,
@@ -31,7 +24,7 @@ const userNavigation = [
 ]
 const navigation: NavItem[] = [
     { name: 'Dashboard', href: '/customer/dashboard', icon: 'dashboard', count: '5', current: true },
-    { name: 'Tenants', href: '/customer/tenants', icon: 'postbox', current: false, base_url: 'customer/audit' },
+    { name: 'Properties', href: '/customer/properties', icon: 'postbox', current: false, base_url: 'customer/audit' },
     { name: 'Reminders', href: '/customer/rents', icon: 'scheduler', count: '12', current: false },
     { name: 'Payments', href: '/customer/payments', icon: 'scheduler', count: '12', current: false },
     { name: 'Settings', href: '/customer/settings', icon: 'users', count: '20+', current: false },
@@ -60,13 +53,13 @@ function getCookie(cname: string) {
 }
 
 
-export const Navigation = () => {
+export const Navigation: () => JSX.Element = (): JSX.Element => {
     const [activeTab, setActiveTab] = useState<string>('');
-    const session = useSession();
+    const session: any = useSession();
     const [userImage, setUserImage] = useState<string>();
     const [userName, setUserName] = useState<string>();
     const [user, setUser] = useState<any>(null);
-    const router = useRouter();
+    const router: AppRouterInstance = useRouter();
 
 
     useEffect( () => {
@@ -101,9 +94,9 @@ export const Navigation = () => {
 
     async function handleLogout() {
         try {
-            const hostUrl: string = getCookie('host_url');
+            // TODO - move this to a api/ route logout
+            const hostUrl: string|undefined = process.env.HOST_URL;
             const token: string = getCookie('authToken');
-            const uId: string = getCookie('u_id');
             let url: string = hostUrl +  "customer/logout/logout";
             if (url.includes('local')) {
                 if (url.includes('?')) {
@@ -114,7 +107,7 @@ export const Navigation = () => {
             }
             await signOut({ redirect: false })
                 .then((res) => {
-                    const id: string = uId;
+                    const id: string = session?.data?.user?.id;
                     const request: Request = new Request(url, {
                         method: "POST",
                         body: JSON.stringify({ id: id }),
@@ -127,8 +120,6 @@ export const Navigation = () => {
                     fetch(request)
                         .then( async (response: Response) => {
                             delete_cookie('authToken');
-                            delete_cookie('host_url');
-                            delete_cookie('u_id');
                             router.push('/');
                         } )
 
@@ -141,19 +132,19 @@ export const Navigation = () => {
 
 
     return (
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
+        <div className="mx-auto max-w-9xl px-4 sm:px-6 lg:px-8 py-1">
             <div className="flex h-16 items-center justify-between">
                 <div className="flex items-center">
                     <div className="shrink-0">
                         <img
                             alt="Your Company"
                             src="/image/icon/ra-logo-white-assist.png"
-                            className="w-[130px] h-[45px] dark:hidden"
+                            className="w-50 h-auto dark:hidden"
                         />
                         <img
                             alt="Your Company"
                             src="/image/icon/ra-logo-white.png"
-                            className="w-[130px] h-[45px] not-dark:hidden"
+                            className="w-50 h-auto not-dark:hidden"
                         />
                     </div>
                     <div className="hidden md:block">
@@ -173,7 +164,7 @@ export const Navigation = () => {
                                             current
                                                 ? 'bg-raBlue/40 text-white dark:bg-raGreen/40'
                                                 : 'text-white hover:bg-raBlue/75 dark:hover:bg-raGreen/75',
-                                            'rounded-md px-3 py-2 text-sm font-medium',
+                                            'rounded-md px-3 py-2 text-xl font-medium',
                                         )}
                                     >
                                         {item.name}
@@ -200,13 +191,13 @@ export const Navigation = () => {
                                 <span className="absolute -inset-1.5" />
                                 <span className="sr-only">Open user menu</span>
                                 { (userImage === undefined) &&
-                                    <UserIcon className="size-7 fill-white border-white" />
+                                    <UserIcon className="size-9 fill-white border-white" />
                                 }
                                 { (userImage !== undefined) &&
                                     <img
                                         alt=""
                                         src={ userImage }
-                                        className="size-8 rounded-full outline -outline-offset-1 outline-white/10"
+                                        className="size-9 rounded-full outline -outline-offset-1 outline-white/10"
                                     />
                                 }
 
@@ -223,8 +214,8 @@ export const Navigation = () => {
                                             className="block
                                             px-4
                                             py-2
-                                            text-sm
-                                            text-gray-700
+                                            text-xl
+                                            text-raBlue
                                             data-focus:bg-gray-100
                                             data-focus:outline-hidden
                                             dark:text-gray-200
@@ -240,8 +231,8 @@ export const Navigation = () => {
                                         className="block
                                         px-4
                                         py-2
-                                        text-sm
-                                        text-gray-700
+                                        text-xl
+                                        text-raBlue/80
                                         data-focus:bg-gray-100
                                         data-focus:outline-hidden
                                         dark:text-gray-200

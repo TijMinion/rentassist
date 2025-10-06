@@ -7,14 +7,16 @@ export const AccountPageFooter = () => {
 
     return (
         <>
-            <div className="w-full bg-nnBackground">
-                <div className="footer-container mx-auto lg:max-w-7xl flex justify-between py-2">
-                    <span className="text-nnTextPurple"  >&copy; { today.getFullYear() + ", made by " } <span className="text-nnDefaultBlue font-bold" >{ "NokNok" }</span> </span>
-                    <div className="flex">
-                        <div className="ml-5">
-                            <span>{ "Terms of Use" }</span>
+            <div className="w-full bg-raBlue">
+                <div className="footer-container mx-auto lg:max-w-9xl flex justify-between py-2">
+                    <span className="text-white text-2xl"  >&copy; { today.getFullYear() + ", made by " } <span className="text-nnDefaultBlue font-bold" >{ "RentAssist" }</span> </span>
+                    <div className="flex text-2xl">
+                        <div className="ml-5 text-white">
+                            <a href="#">{ "Terms of Use" }</a>
                         </div>
-                        <AccountPagesFooterTerms />
+                        <div className="ml-5 text-white">
+                            <a href="#">{ "Privacy" }</a>
+                        </div>
                     </div>
                 </div>
             </div>

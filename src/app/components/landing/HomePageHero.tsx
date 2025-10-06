@@ -1,15 +1,15 @@
 'use client'
-import { Header } from "@/app/components/header/Header";
+import { JSX } from 'react';
 
-export const  HomePageHero = () => {
+export const  HomePageHero: () => JSX.Element = (): JSX.Element => {
 
     function scrollToSection(section: string): void {
-        const element = document.getElementById(section);
+        const element: HTMLElement|null = document.getElementById(section);
         element?.scrollIntoView({ behavior: 'smooth' });
     }
 
     return (
-        <div className="bg-white ">
+        <div className="bg-[url(/image/rent-assist-hero-background.jpg)] bg-center bg-cover bg-white/80 bg-blend-overlay">
             <div className="relative isolate px-6 pt-14 lg:px-8 h-full">
                 {/*<div*/}
                 {/*    aria-hidden="true"*/}
@@ -23,13 +23,13 @@ export const  HomePageHero = () => {
                 {/*        className="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"*/}
                 {/*    />*/}
                 {/*</div>*/}
-                <div className="mx-auto max-w-3xl pt-32 pb-12 sm:py-48 lg:py-56 h-full flex items-center">
-                    <div className="text-center">
-                        <h1 className="text-5xl font-semibold tracking-tight text-raBlue sm:text-7xl font-sans">
+                <div className="mx-auto max-w-9xl pt-32 pb-12 sm:py-48 lg:py-56 h-full flex items-center">
+                    <div className="text-center mx-auto">
+                        <h1 className="text-8xl font-semibold tracking-tight text-raBlue sm:text-8xl font-sans">
                             Never chase <span className="text-raGreen" >rent</span> again
                         </h1>
-                        <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8 font-sans">
-                            RentAssist automatically reminds tenants when rent is due and alerts you if it’s late — saving landlords time, stress, and awkward conversations.
+                        <p className="mt-8 text-lg font-medium text-pretty text-raBlue/80 sm:text-4xl font-sans max-w-7xl mx-auto">
+                            { "RentAssist automatically reminds tenants when rent is due and alerts you if it’s late - saving landlords time, stress, and awkward conversations." }
                         </p>
                         <div className="mt-10 flex items-center justify-center gap-x-6">
                             <a
@@ -38,7 +38,7 @@ export const  HomePageHero = () => {
                                 bg-raGreen
                                 px-3.5
                                 py-2.5
-                                text-sm
+                                text-2xl
                                 font-semibold
                                 font-sans
                                 text-white
@@ -50,12 +50,12 @@ export const  HomePageHero = () => {
                             >
                                 Get started
                             </a>
-                            <a href="#" onClick={ () => scrollToSection('features') } className="text-sm/6 font-semibold text-gray-900 font-sans">
+                            <a href="#" onClick={ () => scrollToSection('features') } className="text-3xl font-semibold text-gray-900 font-sans">
                                 Learn more <span aria-hidden="true">→</span>
                             </a>
                         </div>
-                        <p className="mt-40 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8 font-sans">
-                            Perfect for <span className="text-raGreen" >UK landlords with 1 - 20 properties.</span> No complicated software, just simple reminders that work.
+                        <p className="mt-40 text-xl font-medium text-pretty text-raBlue/80 sm:text-2xl font-sans">
+                            Perfect for <span className="text-raGreen font-semibold" >UK landlords with 1 - 20 properties.</span> No complicated software, just simple reminders that work.
                         </p>
                     </div>
                 </div>

@@ -32,7 +32,7 @@ export const Header: () => JSX.Element = (): JSX.Element => {
 
     return (
         <header className="absolute inset-x-0 top-0 z-50">
-            <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-9xl">
                 <div className="px-6 pt-6 lg:pr-0 lg:pl-8 w-full">
                     <nav aria-label="Global" className="flex items-center justify-between lg:justify-start">
                         <a href="/" className="">
@@ -54,9 +54,9 @@ export const Header: () => JSX.Element = (): JSX.Element => {
                                     lastLink = true;
                                 }
 
-                                let classes: string = "text-sm/6 font-semibold text-raBlue hover:text-raGreen cursor-pointer";
+                                let classes: string = "text-2xl font-semibold text-raBlue hover:text-raGreen cursor-pointer";
                                 if (item.pill) {
-                                    classes = "rounded-md bg-raGreen px-3.5 py-2.5 text-sm font-semibold font-sans text-white shadow-xs hover:bg-raBlue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-raBlue"
+                                    classes = "rounded-md bg-raGreen px-3.5 py-2.5 text-xl font-semibold font-sans text-white shadow-xs hover:bg-raBlue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-raBlue"
                                 }
 
                                 if (item.link) {
@@ -72,7 +72,7 @@ export const Header: () => JSX.Element = (): JSX.Element => {
                                 return (
                                     <span key={item.name}
                                           onClick={ () => scrollToSection(item.href) }
-                                          className={ "text-sm/6 font-semibold text-raBlue hover:text-raGreen cursor-pointer" + (lastLink ? ' ml-auto' : ''  ) }>
+                                          className={ "text-2xl font-semibold text-raBlue hover:text-raGreen cursor-pointer" + (lastLink ? ' ml-auto' : ''  ) }>
                                         {item.name}
                                     </span>
                                 );

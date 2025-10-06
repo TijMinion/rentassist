@@ -49,7 +49,7 @@ export const authOptions = {
                         url: hostUrl,
                     };
                     cookieStore?.set('authToken', user.token);
-                    cookieStore?.set('host_url', hostUrl);
+                    // cookieStore?.set('host_url', hostUrl);
 
                     // window?.localStorage?.setItem('host_url', JSON.stringify( hostData ));
                     // If no error and we have user data, return it
@@ -58,7 +58,7 @@ export const authOptions = {
                         //     name: 'authToken',
                         //     value: user.token,
                         // })
-                        cookieStore?.set('u_id', user.id);
+                        // cookieStore?.set('u_id', user.id);
                         return {
                             id: user.id,
                             name: user.name,

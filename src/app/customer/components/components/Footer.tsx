@@ -9,9 +9,10 @@ type NavItem = {
 
 
 const navigation: NavItem[] = [
-        { name: 'Features', href: 'features' },
-        { name: 'Pricing', href: 'pricing' },
-        { name: 'FAQ', href: 'faq' },
+        { name: 'Properties', href: '/customer/properties' },
+        { name: 'Reminders', href: '/customer/reminders' },
+        { name: 'Payments', href: '/customer/payments' },
+        { name: 'Settings', href: '/customer/settings' },
     ];
 
 export const Footer: () => JSX.Element = (): JSX.Element => {
@@ -25,19 +26,19 @@ export const Footer: () => JSX.Element = (): JSX.Element => {
 
     return (
         <footer className="bg-raGreen dark:bg-raBlueDarker__30_percent">
-            <div className="mx-auto max-w-7xl overflow-hidden px-8 py-10 sm:py-4 lg:px-8">
-                <nav aria-label="Footer" className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-sm/6">
+            <div className="mx-auto max-w-9xl overflow-hidden px-8 py-10 sm:py-4 lg:px-8">
+                <nav aria-label="Footer" className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-2xl">
                     { navigation.map((item: NavItem, index: number): JSX.Element => {
                         return (
-                            <span key={item.name}
-                                  onClick={ () => scrollToSection(item.href) }
+                            <a key={item.name}
+                                  href={ item.href }
                                   className="text-white hover:text-raBlue cursor-pointer">
                                 {item.name}
-                            </span>
+                            </a>
                         );
                     })}
                 </nav>
-                <p className="mt-10 text-center text-sm/6 text-white">&copy; { ` ${ today.getFullYear() } DigiHall trading as RentAssist. All rights reserved.` } </p>
+                <p className="mt-10 text-center text-xl text-white">&copy; { ` ${ today.getFullYear() } DigiHall trading as RentAssist. All rights reserved.` } </p>
             </div>
         </footer>
     )

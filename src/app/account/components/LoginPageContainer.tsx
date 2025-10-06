@@ -82,7 +82,7 @@ export const LoginPageContainer: () => JSX.Element = (): JSX.Element => {
 
     return (
         <>
-            <div className="w-full h-screen mx-auto px-4 sm:px-6 lg:px-0 flex justify-center items-center bg-nnBackground">
+            <div className="w-full h-screen mx-auto px-4 sm:px-6 lg:px-0 flex justify-center items-center">
                 {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
                 <div className="w-full grid sm:grid-cols-1 md:grid-cols-[50%_50%] h-full 3xl:grid-cols-[32%_68%] ">
                     <div className="login-container bg-white w-full p-12 relative h-full flex items-center blur-none">
@@ -93,21 +93,21 @@ export const LoginPageContainer: () => JSX.Element = (): JSX.Element => {
 
                                         <div className="mt-4 mb-20">
                                             <Link href="/">
-                                                <img className="w-[200px] h-[80px]" src="/image/icon/ra-logo.png" alt="Logo Logo"  />
+                                                <img className="w-[240px] h-auto" src="/image/icon/ra-logo.png" alt="Logo Logo"  />
                                             </Link>
 
                                         </div>
-                                        <span className="font-bold text-4xl text-raBlue -mt-4 mb-[30px] font-sans">{ "Sign into your account!" }</span>
+                                        <span className="font-bold text-5xl text-raBlue -mt-4 mb-[30px] font-sans">{ "Sign into your account!" }</span>
                                     </div>
                                     <div className="w-full flex items-center mt-7">
-                                        <span className="text-raBlue font-sans" >{ "Don't have an account?" }</span>
-                                        <Link href="/account/register" className="text-sm/6 font-semibold text-raGreen ml-2">
+                                        <span className="text-raBlue font-sans text-xl" >{ "Don't have an account?" }</span>
+                                        <Link href="/account/register" className="text-xl font-semibold text-raGreen ml-2">
                                             { "Sign up" }
                                         </Link>
                                     </div>
                                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                         <div className="col-span-full">
-                                            <label htmlFor="email" className="block text-sm/6 font-medium text-raBlue">
+                                            <label htmlFor="email" className="block text-xl font-semibold text-raBlue">
                                                 Email address
                                             </label>
                                             <div className="mt-2">
@@ -120,7 +120,7 @@ export const LoginPageContainer: () => JSX.Element = (): JSX.Element => {
                                                         value={ email }
                                                         onChange={ handleEmailChange }
                                                         placeholder="Enter your email address"
-                                                        className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6 h-[48px]"
+                                                        className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-raBlue/80 placeholder:text-gray-400 focus:outline-none sm:text-xl h-[48px]"
                                                     />
                                                 </div>
                                             </div>
@@ -128,10 +128,10 @@ export const LoginPageContainer: () => JSX.Element = (): JSX.Element => {
 
                                         <div className="col-span-full">
                                             <div className="w-full flex justify-between">
-                                                <label htmlFor="password" className="block text-sm/6 font-medium text-raBlue">
+                                                <label htmlFor="password" className="block text-xl font-medium text-raBlue">
                                                     Password
                                                 </label>
-                                                <Link href="/account/forgot-password" className="text-sm/6 font-semibold text-raBlue hover:text-raGreen">
+                                                <Link href="/account/forgot-password" className="text-xl text-raBlue hover:text-raGreen">
                                                     { "Forgot Password?" }
                                                 </Link>
                                             </div>
@@ -146,7 +146,7 @@ export const LoginPageContainer: () => JSX.Element = (): JSX.Element => {
                                                         value={ password }
                                                         onChange={ handlePasswordChange }
                                                         placeholder="Enter your password"
-                                                        className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6 h-[48px]"
+                                                        className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-xl h-[48px]"
                                                     />
                                                     <div className="w-[60px] flex justify-center items-center cursor-pointer" onClick={ handleShowPasswordClick }>
                                                         { !showPassword &&
@@ -164,7 +164,7 @@ export const LoginPageContainer: () => JSX.Element = (): JSX.Element => {
                             </div>
                             <div className="mt-6 flex items-center justify-between flex-col gap-x-6">
                                 { (errors !== undefined) &&
-                                    <span className="w-full px-4 text-center text-red">
+                                    <span className="w-full px-4 text-center text-[red] text-2xl mb-4">
                                         { errors }
                                     </span>
                                 }
@@ -173,10 +173,9 @@ export const LoginPageContainer: () => JSX.Element = (): JSX.Element => {
                                     className="rounded-md
                                     bg-raGreen
                                     w-full
-                                    h-[50px]
                                     px-3
                                     py-2
-                                    text-lg
+                                    text-3xl
                                     font-semibold
                                     text-white
                                     shadow-xs
@@ -192,10 +191,10 @@ export const LoginPageContainer: () => JSX.Element = (): JSX.Element => {
                                 >
                                     <span>{ "Sign in" }</span>
                                     { (loggingIn) &&
-                                        <ArrowPathIcon className="animate-spin w-8 h-8 text-white fill-current ml-4" />
+                                        <ArrowPathIcon className="animate-spin w-9 h-auto text-white fill-current ml-4" />
                                     }
                                     { (!loggingIn) &&
-                                        <ArrowLongRightIcon className="w-8 pl-2 mt-1" />
+                                        <ArrowLongRightIcon className="w-9 pl-2 mt-1" />
                                     }
                                 </button>
 

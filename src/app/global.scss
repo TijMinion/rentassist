@@ -10,4 +10,8 @@
   --color-raBlueDarker__30_percent: #{color.scale(#0c2548, $lightness: -30%)};
   --color-raGreen: #1b825b;
   --breakpoint-3xl: 120rem;
+  --container-8xl: 90rem;
+  --spacing-8xl: 90rem;
+  --container-9xl: 100rem; /* 1600px */
+  --spacing-9xl: 100rem;   /* optional, if you also want w-9xl */
 }

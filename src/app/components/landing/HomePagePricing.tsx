@@ -1,6 +1,5 @@
-import { Fragment } from 'react'
-import { CheckIcon, MinusIcon, PlusIcon } from '@heroicons/react/16/solid'
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+import { JSX } from 'react'
+import { PlusIcon } from '@heroicons/react/16/solid';
 
 const tiers = [
     {
@@ -40,49 +39,16 @@ const tiers = [
         ],
     },
 ]
-const sections = [
-    {
-        name: 'Features',
-        features: [
-            { name: 'Edge content delivery', tiers: { Starter: true, Growth: true, Scale: true } },
-            { name: 'Custom domains', tiers: { Starter: '1', Growth: '3', Scale: 'Unlimited' } },
-            { name: 'Team members', tiers: { Starter: '3', Growth: '20', Scale: 'Unlimited' } },
-            { name: 'Single sign-on (SSO)', tiers: { Starter: false, Growth: false, Scale: true } },
-        ],
-    },
-    {
-        name: 'Reporting',
-        features: [
-            { name: 'Advanced analytics', tiers: { Starter: true, Growth: true, Scale: true } },
-            { name: 'Basic reports', tiers: { Starter: false, Growth: true, Scale: true } },
-            { name: 'Professional reports', tiers: { Starter: false, Growth: false, Scale: true } },
-            { name: 'Custom report builder', tiers: { Starter: false, Growth: false, Scale: true } },
-        ],
-    },
-    {
-        name: 'Support',
-        features: [
-            { name: '24/7 online support', tiers: { Starter: true, Growth: true, Scale: true } },
-            { name: 'Quarterly workshops', tiers: { Starter: false, Growth: true, Scale: true } },
-            { name: 'Priority phone support', tiers: { Starter: false, Growth: false, Scale: true } },
-            { name: '1:1 onboarding tour', tiers: { Starter: false, Growth: false, Scale: true } },
-        ],
-    },
-]
 
-function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ')
-}
-
-export const HomePagePricing = () => {
+export const HomePagePricing: () => JSX.Element = (): JSX.Element => {
     return (
-        <div className="bg-white py-24 sm:py-32" id="pricing">
-            <div className="mx-auto max-w-4xl px-6 max-lg:text-center lg:max-w-7xl lg:px-8">
-                <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-950 sm:text-6xl lg:text-pretty">
-                    Simple pricing, no hidden fees.
+        <div className="bg-white pt-24 sm:pt-24" id="pricing">
+            <div className="mx-auto max-w-9xl px-6 max-lg:text-center lg:max-w-9xl lg:px-8">
+                <h1 className="text-5xl font-semibold tracking-tight text-balance text-raBlue sm:text-7xl lg:text-pretty">
+                    { "Simple pricing, no hidden fees." }
                 </h1>
-                <p className="mt-6 max-w-2xl text-lg font-medium text-pretty text-gray-600 max-lg:mx-auto sm:text-xl/8">
-                    Start free today — no card required.
+                <p className="mt-6 max-w-2xl text-lg font-medium text-pretty text-raBlue/80 max-lg:mx-auto sm:text-4xl">
+                    { "Start free today — no card required." }
                 </p>
             </div>
             <div className="relative pt-16 sm:pt-24">
@@ -93,23 +59,35 @@ export const HomePagePricing = () => {
                 bg-[radial-gradient(circle_at_center_center,#0c2548,#0c2548,#030712_70%)]
                 lg:bg-[radial-gradient(circle_at_center_150%,#0c2548,#0c2548,#030712_70%)]
                 " />
-                <div className="relative mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+                <div className="relative mx-auto max-w-2xl px-6 lg:max-w-9xl lg:px-8">
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 pb-60" >
                         {tiers.map((tier, index: number) => (
                             <div
                                 key={tier.name}
-                                className="-m-2 grid grid-cols-1 rounded-4xl bg-white/2.5 shadow-[inset_0_0_2px_1px_#ffffff4d] ring-1 ring-raGreen/5 max-lg:mx-auto max-lg:w-full max-lg:max-w-md"
+                                className="-m-2
+                                grid
+                                grid-cols-1
+                                rounded-4xl
+                                bg-white/2.5
+                                shadow-[inset_0_0_2px_1px_#ffffff4d]
+                                ring-1
+                                ring-raGreen
+                                max-lg:mx-auto
+                                max-lg:w-full
+                                max-lg:max-w-md
+                                hover:ring-raBlue
+                                "
                             >
                                 <div className="grid grid-cols-1 rounded-4xl p-2 shadow-md shadow-black/5">
                                     <div className="rounded-3xl bg-white p-10 pb-9 shadow-2xl ring-1 ring-black/5">
-                                        <h2 className="text-md font-semibold text-raGreen">
+                                        <h2 className="text-4xl font-semibold text-raGreen">
                                             {tier.name} <span className="sr-only">plan</span>
                                         </h2>
-                                        <p className="mt-2 text-sm/6 text-pretty text-gray-600">{tier.description}</p>
+                                        <p className="mt-2 text-2xl text-pretty text-raBlue/80 h-15">{tier.description}</p>
                                         <div className="mt-8 flex items-center gap-4">
-                                            <div className="text-5xl font-semibold text-gray-950">{tier.priceMonthly}</div>
+                                            <div className="text-5xl font-semibold text-raBlue">{tier.priceMonthly}</div>
                                             { (index == 1) &&
-                                                <div className="text-sm text-gray-600">
+                                                <div className="text-2xl text-raBlue/80">
                                                     <p>per month</p>
                                                 </div>
                                             }
@@ -125,7 +103,7 @@ export const HomePagePricing = () => {
                                                 px-3.5
                                                 py-2
                                                 text-center
-                                                text-sm/6
+                                                text-2xl
                                                 font-semibold
                                                 text-white
                                                 shadow-xs
@@ -135,22 +113,22 @@ export const HomePagePricing = () => {
                                                 focus-visible:outline-raBlue
                                                 "
                                             >
-                                                Get Started
+                                                { "Get Started" }
                                             </a>
                                         </div>
                                         <div className="mt-8">
-                                            <h3 className="text-sm/6 font-medium text-gray-950">Start selling with:</h3>
+                                            <h3 className="text-2xl font-medium text-raBlue">{ "Start selling with:" }</h3>
                                             <ul className="mt-3 space-y-3">
                                                 {tier.highlights.map((highlight) => (
                                                     <li
                                                         key={highlight.description}
                                                         data-disabled={highlight.disabled}
-                                                        className={ "group flex items-start gap-4 text-sm/6 text-gray-600 " + (highlight.disabled ? ' data-disabled:text-gray-400': '' ) }
+                                                        className={ "group flex items-start gap-4 text-2xl text-raBlue/80 " + (highlight.disabled ? ' data-disabled:text-gray-400': '' ) }
                                                     >
                                                         <span className="inline-flex h-6 items-center">
                                                           <PlusIcon
                                                               aria-hidden="true"
-                                                              className="size-4 fill-gray-400 group-data-disabled:fill-gray-300"
+                                                              className="size-6 text-raGreen group-data-disabled:fill-raGreen"
                                                           />
                                                         </span>
                                                         {highlight.disabled ? <span className="sr-only">Not included:</span> : null}
